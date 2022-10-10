@@ -34,6 +34,7 @@ class CarroBuilderTest {
 		assertNotNull(carroConstruido.getMotor());
 		assertNotNull(carroConstruido.getFreioABS());
 		assertNotNull(carroConstruido.getComputadorBordo());
+		assertEquals(carroConstruido.getPortas().length, 2);
 		
 	}
 
