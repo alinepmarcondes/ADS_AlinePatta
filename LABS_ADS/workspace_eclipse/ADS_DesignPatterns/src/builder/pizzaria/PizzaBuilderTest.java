@@ -22,4 +22,33 @@ class PizzaBuilderTest {
 			
 	}
 
+	@Test
+	void deveInvalidarPizzaComTamanhoErrado() {
+		try {
+			Pizza pizza = new PizzaBuilder()
+					.setSize(9)
+					.addCheese()
+					.addPepperoni()
+					.getPizza();
+			
+			fail("Devia ter lançado exception");
+		}catch (IllegalStateException e) {
+			//exception esperada
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void deveInvalidarPizzaSemIngrediente() {
+		try {
+			Pizza pizza = new PizzaBuilder()
+					.setSize(1)
+					.getPizza();
+			
+			fail("Devia ter lançado exception");
+		}catch (IllegalStateException e) {
+			//exception esperada
+			e.printStackTrace();
+		}
+	}
 }

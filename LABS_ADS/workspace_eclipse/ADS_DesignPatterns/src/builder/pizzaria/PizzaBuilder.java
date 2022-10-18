@@ -27,5 +27,22 @@ public class PizzaBuilder {
 		return pizza;
 	}
 	
+	private void validarTamanho() {
+		Integer size = pizza.getSize();
+		if(size!=1 && size!=2 && size!=3) {
+			throw new IllegalStateException("Tamanho de pizza inválido: " + size);
+		}
+	}
+	
+	private void validarIngredientes() {
+		if(pizza.getFlagCheese()) {
+			return;
+		}
+		if(pizza.getFlagPepperoni()) {
+			return;
+		}
+		throw new IllegalStateException("Nenhum ingrediente adicionado");
+	}
+	
 }
 
