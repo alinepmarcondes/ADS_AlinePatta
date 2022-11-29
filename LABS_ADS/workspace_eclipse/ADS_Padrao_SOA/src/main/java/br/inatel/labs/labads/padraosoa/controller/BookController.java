@@ -44,4 +44,24 @@ public class BookController {
 		return createdBook;
 	}
 	
+	@PutMapping
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void putBook (@RequestBody Book book) {
+		service.updateBook(book);
+	}
+	
+	@DeleteMapping("{id}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void deleteBookById(@PathVariable("id") Long bookId) {
+		Optional<Book> opBook = service.findBookById(bookId);
+		
+		if(opBook.isPresent()) {
+			Book book = opBook.get();
+			service.deleteBook(book);
+		}else {
+			String errormsg = "No book found by id" + bookId;
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, errormsg);
+		}
+	}
+	
 }

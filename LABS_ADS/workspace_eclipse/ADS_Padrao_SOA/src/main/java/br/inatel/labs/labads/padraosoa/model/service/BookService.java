@@ -43,5 +43,14 @@ public class BookService {
 		bookList.add(b);
 		return b;
 	}
+	
+	public void updateBook(Book book) {
+		bookList.remove(book);
+		bookList.add(book);
+	}
+	
+	public void deleteBook(Book book) {
+		bookList.remove(book);
+	}
 
 }
